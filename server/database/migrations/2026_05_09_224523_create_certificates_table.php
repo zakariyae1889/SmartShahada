@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
+            $table->uuid("certificate_serial")->index();
+            $table->string("qr_code_path")->nullable();
+            $table->foreignId("request_id")->constrained("request__certificates")->onDelete("cascade");
             $table->timestamps();
         });
     }

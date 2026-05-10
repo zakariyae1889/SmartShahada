@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('username')->uinque();
             $table->string("cin")->uinque();
             $table->string('email')->unique();
-            $table->string("first_name");
-            $table->string("last_name");
+            $table->string("first_name")->nullable();
+            $table->string("last_name")->nullable();
             $table->enum("role",["admin","employee","citizen"])->default("citizen");
-            $table->enum("status", ["active", "inactive", "suspended", "pending"])->default("active");
+            $table->enum("status", ["active", "inactive", "suspended", "pending","banned"])->default("active");
             $table->string('password');
+            $table->softDeletes();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

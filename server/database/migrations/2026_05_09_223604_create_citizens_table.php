@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('citizens', function (Blueprint $table) {
             $table->id();
+            $table->date("birth_date");
+            $table->string("birth_place");
+            $table->string("address");
+            $table->string("phone")->nullable();
+            $table->enum("sex",["Homme","Female"]);
+            $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

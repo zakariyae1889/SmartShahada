@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('request__certificates', function (Blueprint $table) {
             $table->id();
+            $table->uuid('tracking_number')->unique()->index();
+            $table->enum("status",["pending","processing","approved","rejected","archived"]);
+            $table->text("rejection_reason")->nullable();
+            $table->foreignId("adminstration_id")->constrained("administrations")->onDelete("cascade");
+            $table->foreignId("citizen_id")->constrained("citizens")->onDelete("cascade");
+            $table->foreignId("certificate_type_id")->constrained("certificate_types")->onDelete("cascade");
             $table->timestamps();
         });
     }

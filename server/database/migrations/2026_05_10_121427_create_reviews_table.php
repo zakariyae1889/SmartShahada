@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->foreignId("region_id")->constrained("regions")->onDelete("cascade");
+            $table->tinyInteger('stars')->unsigned();
+            $table->foreignId("citizen_id")->constrained("citizens")->onDelete("cascade");
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('reviews');
     }
 };
