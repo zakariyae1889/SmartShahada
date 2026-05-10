@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('request__certificates', function (Blueprint $table) {
             $table->id();
-            $table->uuid('tracking_number')->unique()->index();
+            $table->uuid('tracking_number')->unique()->default(DB::raw('(UUID())'));
             $table->enum("status",["pending","processing","approved","rejected","archived"]);
             $table->text("rejection_reason")->nullable();
             $table->foreignId("adminstration_id")->constrained("administrations")->onDelete("cascade");
