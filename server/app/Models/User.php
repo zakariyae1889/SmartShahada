@@ -29,4 +29,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function citizen(){
+        return $this->belongsTo(Citizen::class,"user_id");
+    }
+
+    public function cities(){
+        return $this->hasMany(City::class,"city_id");
+    }
+
+    public function category(){
+        return $this->hasMany(Category::class,"user_id");
+    }
+
+    public function adminstration(){
+        return $this->hasMany(Adminstration::class,"user_id");
+    }
 }

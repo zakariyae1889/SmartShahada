@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('stars')->unsigned();
             $table->foreignId("citizen_id")->constrained("citizens")->onDelete("cascade");
+            $table->foreignId("request_id")->constrained("request__certificates")->onDelete("cascade");
             $table->text('comment')->nullable();
             $table->timestamps();
         });
