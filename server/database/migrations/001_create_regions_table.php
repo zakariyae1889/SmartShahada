@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certificates', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->uuid("certificate_serial")->index();
-            $table->string("qr_code_path")->nullable();
-            $table->foreignId("request_id")->constrained("request__certificates")->onDelete("cascade");
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certificates');
+        Schema::dropIfExists('regions');
     }
 };

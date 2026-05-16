@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->foreignId("region_id")->constrained("regions")->onDelete("cascade");
+            $table->string("file_path");
+            $table->string('document_type_lable')->nullable();
+            $table->foreignId("request_certificate_id")->constrained("request_certificates")->onDelete("cascade"); // تأكد من وجود constrained
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('attachments');
     }
 };

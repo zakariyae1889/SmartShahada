@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('certificate_types', function (Blueprint $table) {
             $table->id();
-
             $table->string("title");
             $table->text("description");
             $table->text("attachment");
@@ -21,7 +20,6 @@ return new class extends Migration
             $table->date("expiry_date");
             $table->uuid("slug")->unique()->index();
             $table->foreignId("category_id")->constrained("categories")->onDelete("cascade");
-
             $table->timestamps();
         });
     }
