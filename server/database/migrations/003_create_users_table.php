@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string("cin")->unique();
             $table->string('email')->unique();
+            $table->string("first_name");
+            $table->string("last_name");
             $table->enum("role", ["admin", "employee", "citizen"])->default("citizen");
             $table->enum("status", ["active", "inactive", "suspended", "pending", "banned"])->default("active");
             $table->string('password');

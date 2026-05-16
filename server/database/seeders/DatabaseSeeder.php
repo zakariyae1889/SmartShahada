@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
        $this->call([
         RegionSeeder::class,
         CitySeeder::class,
+        AdminSeeder::class
        ]);
     }
 }
